@@ -287,7 +287,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
   <p class="hero-desc" id="heroDesc">I am a first class Computer Engineering graduate with a CGPA of 4.58 out of 5.00, placing me in the top 4% of my graduating class. I work in robotics, embedded systems, and control theory, and I am deeply interested in building machines that can work alongside people in meaningful ways.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="#projects">View Projects</a>
-    <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#315a455845585d5e5d5071565c50585d1f525e5c">Get In Touch</a>
+    <a class="btn btn-ghost" href="mailto:ktitilola@gmail.com">Get In Touch</a>
     <a class="btn btn-ghost" href="https://github.com/i-am-the-robot" target="_blank">GitHub &#8599;</a>
   </div>
   <div class="hero-meta">
@@ -323,7 +323,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       <div class="info-card">
         <div class="info-card-header">Contact Information</div>
         <div class="info-row"><span class="info-key">Mobile</span><span class="info-val" id="infoPhone">+234 816 522 0426</span></div>
-        <div class="info-row"><span class="info-key">Email</span><span class="info-val" id="infoEmail"><a href="/cdn-cgi/l/email-protection#513a253825383d3e3d3011363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="c0abb4a9b4a9acafaca180a7ada1a9aceea3afad">[email&#160;protected]</span></a></span></div>
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val" id="infoEmail"><a href="mailto:ktitilola@gmail.com">ktitilola@gmail.com</a></span></div>
         <div class="info-row"><span class="info-key">LinkedIn</span><span class="info-val" id="infoLinkedIn"><a href="https://www.linkedin.com/in/salisutitilola123" target="_blank">in/salisutitilola123 &#8599;</a></span></div>
         <div class="info-row"><span class="info-key">GitHub</span><span class="info-val" id="infoGitHub"><a href="https://github.com/i-am-the-robot" target="_blank">i-am-the-robot &#8599;</a></span></div>
         <div class="info-card-header" style="border-top:1px solid var(--border);">Academic Profile</div>
@@ -632,7 +632,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       <h3>Open to research, collaboration and new opportunities</h3>
       <p>If you are working on something interesting in robotics or embedded systems, thinking about a collaboration, or you just want to talk about what I have been building, I would genuinely love to hear from you. Do not hesitate to reach out through any of the channels below.</p>
       <div class="contact-list">
-        <a class="cl-item" href="/cdn-cgi/l/email-protection#99f2edf0edf0f5f6f5f8d9fef4f8f0f5b7faf6f4"><span class="cl-icon">&#9993;</span><div><span class="cl-label">Email</span><span class="__cf_email__" data-cfemail="83e8f7eaf7eaefecefe2c3e4eee2eaefade0ecee">[email&#160;protected]</span></div></a>
+        <a class="cl-item" href="mailto:ktitilola@gmail.com"><span class="cl-icon">&#9993;</span><div><span class="cl-label">Email</span>ktitilola@gmail.com</div></a>
         <a class="cl-item" href="tel:+2348165220426"><span class="cl-icon">&#9743;</span><div><span class="cl-label">Mobile</span>+234 816 522 0426</div></a>
         <a class="cl-item" href="https://www.linkedin.com/in/salisutitilola123" target="_blank"><span class="cl-icon">&#8599;</span><div><span class="cl-label">LinkedIn</span>linkedin.com/in/salisutitilola123</div></a>
         <a class="cl-item" href="https://github.com/i-am-the-robot" target="_blank"><span class="cl-icon">&#9096;</span><div><span class="cl-label">GitHub</span>github.com/i-am-the-robot</div></a>
@@ -665,19 +665,20 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 <footer>
   <div class="footer-left">
-    <p>&#169; <span id="copyrightYear"></span> <span class="fa" id="secretTrigger" style="cursor:default;user-select:none;">Titilola Kazeem Salisu</span></p>
+    <p>&#169; <span id="copyrightYear">2026</span> &mdash; <span class="fa" id="secretTrigger" style="cursor:default;user-select:none;">Titilola Kazeem Salisu</span></p>
     <p class="footer-sub">Computer Engineer &amp; Roboticist &mdash; Nigeria</p>
   </div>
   <div class="footer-links">
-    <a href="/cdn-cgi/l/email-protection#244f504d504d484b4845644349454d480a474b49" class="footer-link">Email</a>
+    <a href="mailto:ktitilola@gmail.com" class="footer-link">Email</a>
     <a href="https://www.linkedin.com/in/salisutitilola123" target="_blank" class="footer-link">LinkedIn</a>
     <a href="https://github.com/i-am-the-robot" target="_blank" class="footer-link">GitHub</a>
   </div>
-  </footer>
+
+</footer>
 
 <!-- edit mode triggered secretly via footer -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const EDIT_PASSWORD_HASH = 'cea2f29c5675642b71534fd1a2320dd0a86796e9c18e2a93f5101db855c4c5a4';
 const editableIds = ['heroDesc','about1','about2','about3','about4','asp1','asp2','asp3','asp4'];
 const infoIds = ['infoPhone','infoEmail','infoLinkedIn','infoGitHub','infoDegree','infoUniversity','infoCGPA','infoPeriod','infoMembership','infoLanguages','infoInterests'];
@@ -723,7 +724,7 @@ function saveEdits() {
   }
   // Exit edit mode directly without password check
   editMode = true;
-  toggleEditMode();
+  toggleEditMode().catch(function(e) { console.error(e); });
 }
 
 function handlePhoto(event) {
@@ -785,7 +786,7 @@ function initPage() {
       if (clickCount >= 5) {
         clickCount = 0;
         clearTimeout(clickTimer);
-        toggleEditMode();
+        toggleEditMode().catch(function(e) { console.error(e); });
       }
     });
   }
@@ -832,4 +833,18 @@ function initPage() {
   // Nav highlight
   var secs = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
-  window.addE
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 180) cur = s.id; });
+    navLinks.forEach(function(l) { l.style.color = l.getAttribute('href') === '#' + cur ? 'var(--text)' : ''; });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPage);
+} else {
+  initPage();
+}
+</script>
+</body>
+</html>
