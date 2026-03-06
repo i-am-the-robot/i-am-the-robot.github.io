@@ -284,7 +284,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
   <p class="hero-eyebrow">Computer Engineer &#183; Robotics &#183; Embedded Systems</p>
   <h1 class="hero-name">Titilola Kazeem<br/><em>Salisu</em></h1>
   <p class="hero-role">Building <strong>intelligent machines</strong> at the intersection of hardware and software &#8212; Ibadan, Oyo State, Nigeria</p>
-  <p class="hero-desc" id="heroDesc">I am a first class Computer Engineering graduate with a CGPA of 4.58 out of 5.00, placing me in the top 4% of my graduating class. I work in robotics, embedded systems, and control theory, and I am deeply interested in building machines that can work alongside people in meaningful ways.</p>
+  <p class="hero-desc" id="heroDesc">I am a first class Computer Engineering graduate with a CGPA of 4.58 out of 5.00, placing me in the top 4% of my graduating class. I work in robotics, embedded systems, and control theory, and I am deeply interested in building machines that can work alongside people in meaningful ways that makes life easier.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="#projects">View Projects</a>
     <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#ff948b968b969390939ebf98929e9693d19c9092">Get In Touch</a>
@@ -305,8 +305,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
     <div class="about-body">
       <p id="about1">My name is Titilola Kazeem Salisu. I studied Computer Engineering at Olabisi Onabanjo University in Ogun State, Nigeria, and graduated in October 2024 with First Class Honours, finishing in the top 4% of my class with a CGPA of 4.58 out of 5.00.</p>
       <p id="about2">My work lives at the meeting point of control theory, embedded systems, and robotics. What draws me to this field is the satisfaction of building things that actually do something in the real world. Whether it is a robot that keeps itself upright by constantly sensing and correcting, a robotic arm that picks up objects using joint angle calculations, or a bottling machine I fabricated and programmed from scratch, I am most at home when a system I built is working in front of me.</p>
-      <p id="about3">Outside of building, I have spent a lot of time teaching. I tutored engineering students at OOU for five years and recorded a 90% success rate. I taught secondary school students microcontroller programming across the country as part of the NCC Buildathon, and I ran embedded systems training sessions at the OOU Tech Community from 2022 to 2024.</p>
-      <p id="about4">I am a Graduate Member of the Nigeria Society of Engineers and a Pupil Member of COREN. I am currently continuing my studies and I am very open to research collaborations and graduate study opportunities in robotics and AI systems.</p>
+      <p id="about3">Outside of building, I have spent a lot of time teaching. I tutored my fellow engineering students at OOU for five years and recorded a 90% success rate. I taught secondary school students microcontroller programming as part of the 2024 NCC Buildathon program, and I ran embedded systems training sessions at the OOU Tech Community from 2022 to 2024.</p>
+      <p id="about4">I am a Graduate Member of the Nigeria Society of Engineers and a Pupil Member of COREN. I am currently continuing my studies at Robotics and Artificial Intelligence Nigeria (RAIN) as a Robotics and Autonomous Systems developer and I am very open to research collaborations and graduate study opportunities in robotics and AI systems.</p>
     </div>
     <div>
       <!-- PROFILE PHOTO -->
@@ -828,4 +828,19 @@ function initPage() {
 
   // Nav highlight
   var secs = document.querySelectorAll('section[id]');
-  var navLinks = document.q
+  var navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 180) cur = s.id; });
+    navLinks.forEach(function(l) { l.style.color = l.getAttribute('href') === '#' + cur ? 'var(--text)' : ''; });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPage);
+} else {
+  initPage();
+}
+</script>
+</body>
+</html>
