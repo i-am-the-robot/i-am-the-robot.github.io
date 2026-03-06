@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Titilola Kazeem Salisu — Robotics and Computer Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:      #06080b;
+  --bg2:     #0c0f14;
+  --bg3:     #12161d;
+  --surface: #161b24;
+  --accent:  #4af0c4;
+  --accent2: #5b8def;
+  --accent3: #f0a04a;
+  --text:    #dde4ee;
+  --text2:   #a8b5c8;
+  --muted:   #55657a;
+  --border:  rgba(255,255,255,0.07);
+  --mono:   'IBM Plex Mono', monospace;
+  --sans:   'IBM Plex Sans', sans-serif;
+  --serif:  'IBM Plex Serif', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(74,240,196,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(74,240,196,0.015) 1px, transparent 1px); background-size: 72px 72px; pointer-events: none; z-index: 0; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 60px; background: rgba(6,8,11,0.96); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--accent); text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* EDIT TOGGLE - hidden, triggered from footer */
+.edit-toggle { display: none; }
+
+/* EDITABLE FIELD STYLES */
+[contenteditable="true"] { outline: none; border-bottom: 1px dashed rgba(74,240,196,0.5); cursor: text; transition: border-color 0.2s, background 0.2s; border-radius: 2px; }
+[contenteditable="true"]:focus { border-bottom-color: var(--accent); background: rgba(74,240,196,0.04); }
+.edit-mode [contenteditable="true"] { border-bottom: 1px dashed rgba(74,240,196,0.4); }
+
+/* LAYOUT */
+section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 7rem 2.5rem; }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; max-width: 100%; padding: 0 6rem; }
+.hero-eyebrow { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--accent); display: inline-block; }
+.hero-name { font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.2rem; }
+.hero-name em { font-style: italic; color: var(--accent); }
+.hero-role { font-family: var(--sans); font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300; color: var(--text2); margin-bottom: 2rem; max-width: 600px; }
+.hero-role strong { color: var(--text); font-weight: 500; }
+.hero-desc { max-width: 560px; font-size: 1rem; color: var(--text2); line-height: 1.85; margin-bottom: 3rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 5rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.72rem 1.6rem; font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.22s; cursor: pointer; border: none; }
+.btn-primary { background: var(--accent); color: #06080b; }
+.btn-primary:hover { background: #7ffde0; transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.hero-meta { display: flex; gap: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.meta-val { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--accent); display: block; }
+.meta-key { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; display: block; }
+
+/* SECTION HEADER */
+.sh { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.sh-num { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.2em; }
+.sh-title { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: var(--text); }
+.sh-sub { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; margin-left: auto; text-transform: uppercase; }
+
+/* ABOUT */
+.about-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+.about-body p { font-size: 0.97rem; color: var(--text2); line-height: 1.9; margin-bottom: 1.4rem; }
+.about-body p strong { color: var(--text); font-weight: 500; }
+
+/* PROFILE PHOTO */
+.photo-wrapper { position: relative; width: 100%; aspect-ratio: 1; max-width: 220px; margin: 0 auto 1.5rem; }
+.profile-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; border: 1px solid var(--border); display: block; background: var(--bg3); }
+.photo-placeholder { width: 100%; aspect-ratio: 1; max-width: 220px; border-radius: 3px; border: 2px dashed rgba(74,240,196,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--muted); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; background: var(--bg3); margin: 0 auto 1.5rem; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.photo-placeholder:hover { border-color: var(--accent); color: var(--accent); }
+.photo-placeholder span { font-size: 2rem; }
+.photo-upload-btn { display: none; width: 100%; margin-bottom: 0.5rem; font-family: var(--mono); font-size: 0.65rem; padding: 0.5rem; background: rgba(74,240,196,0.08); border: 1px solid rgba(74,240,196,0.2); color: var(--accent); border-radius: 2px; cursor: pointer; text-align: center; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; }
+.photo-upload-btn:hover { background: rgba(74,240,196,0.15); }
+.edit-mode .photo-upload-btn { display: block; }
+#photoInput { display: none; }
+
+/* INFO CARD */
+.info-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.info-card-header { padding: 0.85rem 1.5rem; background: var(--bg3); border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.03); gap: 1rem; }
+.info-row:last-child { border-bottom: none; }
+.info-key { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; min-width: 85px; padding-top: 0.1rem; }
+.info-val { font-family: var(--sans); font-size: 0.86rem; color: var(--text2); text-align: right; line-height: 1.55; }
+.info-val a { color: var(--accent); text-decoration: none; }
+.info-val a:hover { text-decoration: underline; }
+
+/* RESEARCH */
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.rc { background: var(--bg2); padding: 2rem; transition: background 0.2s; position: relative; }
+.rc:hover { background: var(--surface); }
+.rc::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--accent), transparent); opacity: 0; transition: opacity 0.25s; }
+.rc:hover::after { opacity: 1; }
+.rc-num { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 1.2rem; display: block; }
+.rc h3 { font-size: 0.93rem; font-weight: 500; color: var(--text); margin-bottom: 0.8rem; line-height: 1.4; }
+.rc p { font-size: 0.84rem; color: var(--text2); line-height: 1.8; }
+
+/* PROJECTS */
+.projects-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.proj { background: var(--bg2); padding: 2.2rem 2.5rem; display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; align-items: start; transition: background 0.2s; border-bottom: 1px solid var(--border); }
+.proj:last-child { border-bottom: none; }
+.proj:hover { background: var(--surface); }
+.proj.featured { grid-template-columns: 1fr; background: var(--bg3); border-left: 2px solid var(--accent); }
+.proj.featured.blue { border-left-color: var(--accent2); }
+.proj.featured.orange { border-left-color: var(--accent3); }
+.proj-year { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; padding-top: 0.2rem; }
+.proj-label { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+.proj-label.blue { color: var(--accent2); }
+.proj-label.orange { color: var(--accent3); }
+.proj-title { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.7rem; }
+.proj-desc { font-size: 0.92rem; color: var(--text2); line-height: 1.85; margin-bottom: 1.2rem; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-family: var(--mono); font-size: 0.6rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border); color: var(--muted); border-radius: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+.tag.hi { border-color: rgba(74,240,196,0.3); color: var(--accent); }
+.tag.hi2 { border-color: rgba(91,141,239,0.3); color: var(--accent2); }
+.tag.hi3 { border-color: rgba(240,160,74,0.3); color: var(--accent3); }
+.proj-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; margin-top: 1.5rem; }
+.sys-diagram { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1.4rem; font-family: var(--mono); font-size: 0.75rem; line-height: 2; }
+.sd-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.sd-line { color: var(--text2); display: flex; gap: 0.5rem; }
+.sd-key { color: var(--accent); min-width: 90px; flex-shrink: 0; }
+.sd-key.blue { color: var(--accent2); }
+.sd-key.orange { color: var(--accent3); }
+.proj-type { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; padding-top: 0.2rem; white-space: nowrap; }
+
+/* SKILLS */
+.skills-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.sg { background: var(--bg2); padding: 2rem; }
+.sg-title { font-family: var(--mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 1rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border); display: block; }
+.sg ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.sg li { font-size: 0.88rem; color: var(--text2); display: flex; align-items: center; gap: 0.6rem; }
+.sg li::before { content: '—'; color: var(--muted); font-size: 0.7rem; }
+
+/* ASPIRATIONS */
+.asp-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; }
+.asp-text p { font-size: 0.97rem; color: var(--text2); line-height: 1.9; margin-bottom: 1.4rem; }
+.asp-text p strong { color: var(--text); font-weight: 500; }
+.asp-goals { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.asp-goal { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.3rem; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--text2); line-height: 1.6; background: var(--bg2); transition: background 0.2s; }
+.asp-goal:last-child { border-bottom: none; }
+.asp-goal:hover { background: var(--surface); }
+.asp-goal-num { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); padding-top: 0.2rem; min-width: 20px; }
+
+/* ESSAY */
+.essay-wrap { max-width: 720px; margin: 0 auto; }
+.essay-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.essay-head { padding: 2rem 3rem; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.essay-label { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.essay-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--text); margin-bottom: 0.5rem; line-height: 1.3; }
+.essay-author { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
+.essay-body { padding: 2.5rem 3rem; font-family: var(--serif); font-size: 1rem; font-weight: 300; color: var(--text2); line-height: 2.05; }
+.essay-body p { margin-bottom: 1.6rem; }
+.essay-body p:last-child { margin-bottom: 0; }
+.essay-drop { float: left; font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: var(--accent); line-height: 0.85; margin: 0.1rem 0.6rem 0 0; }
+
+/* AWARDS */
+.awards-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.awards-table thead tr { background: var(--bg3); }
+.awards-table th { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; padding: 0.9rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+.awards-table td { padding: 1.1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+.awards-table tr { background: var(--bg2); transition: background 0.2s; }
+.awards-table tr:hover { background: var(--surface); }
+.awards-table tr:last-child td { border-bottom: none; }
+.aw-year { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); white-space: nowrap; }
+.aw-name { font-size: 0.92rem; font-weight: 400; color: var(--text); }
+.aw-org { font-size: 0.8rem; font-weight: 300; color: var(--muted); margin-top: 0.2rem; }
+
+/* CONTACT */
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-intro h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--text); margin-bottom: 1rem; line-height: 1.35; }
+.contact-intro p { font-size: 0.92rem; color: var(--text2); line-height: 1.8; margin-bottom: 2rem; }
+.contact-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.cl-item { display: flex; align-items: center; gap: 1.2rem; padding: 1rem 1.3rem; background: var(--bg2); text-decoration: none; color: var(--text2); font-size: 0.88rem; transition: all 0.2s; border-bottom: 1px solid var(--border); }
+.cl-item:last-child { border-bottom: none; }
+.cl-item:hover { background: var(--surface); padding-left: 1.7rem; }
+.cl-icon { font-size: 1rem; min-width: 20px; text-align: center; }
+.cl-label { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.15rem; }
+
+/* CONTACT FORM */
+.contact-form { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.cf-head { padding: 1rem 1.8rem; background: var(--bg3); border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.cf-body { padding: 1.8rem; }
+.fg { margin-bottom: 1.1rem; }
+.fg label { display: block; font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.fg input, .fg textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; padding: 0.72rem 1rem; color: var(--text); font-family: var(--sans); font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s; }
+.fg input:focus, .fg textarea:focus { border-color: var(--accent); }
+.fg textarea { resize: vertical; min-height: 110px; }
+.form-status { font-family: var(--mono); font-size: 0.72rem; padding: 0.8rem 1rem; border-radius: 2px; margin-bottom: 1rem; display: none; }
+.form-status.success { background: rgba(74,240,196,0.1); border: 1px solid rgba(74,240,196,0.3); color: var(--accent); }
+.form-status.error { background: rgba(240,74,74,0.1); border: 1px solid rgba(240,74,74,0.3); color: #f04a4a; }
+
+/* FOOTER */
+footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2.5rem 6rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-left p { font-family: var(--mono); font-size: 0.72rem; color: var(--text2); letter-spacing: 0.05em; }
+.footer-sub { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.08em; }
+.footer-links { display: flex; gap: 1.8rem; }
+.footer-link { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.footer-link:hover { color: var(--accent); }
+.footer-right { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; text-align: right; }
+.fa { color: var(--accent); }
+
+/* SAVE BANNER */
+.save-banner { position: fixed; top: 60px; left: 0; right: 0; z-index: 199; background: rgba(74,240,196,0.1); border-bottom: 1px solid rgba(74,240,196,0.2); padding: 0.6rem 4rem; display: none; align-items: center; justify-content: space-between; }
+.save-banner p { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.08em; }
+.save-banner button { font-family: var(--mono); font-size: 0.68rem; padding: 0.4rem 1rem; background: var(--accent); color: #06080b; border: none; border-radius: 2px; cursor: pointer; font-weight: 500; }
+.edit-mode .save-banner { display: flex; }
+
+/* MINI PROJECTS */
+.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.mini-card { background: var(--bg2); padding: 1.8rem; transition: background 0.2s; }
+.mini-card:hover { background: var(--surface); }
+.mini-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; }
+.mini-label { font-family: var(--mono); font-size: 0.6rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; }
+.mini-year { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; }
+.mini-title { font-family: var(--sans); font-size: 0.97rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; line-height: 1.35; }
+.mini-desc { font-size: 0.84rem; color: var(--text2); line-height: 1.75; }
+@media (max-width: 860px) { .mini-grid { grid-template-columns: 1fr; } }
+
+/* HERO ANIM */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-eyebrow { animation: fadeUp 0.7s ease 0.1s both; }
+.hero-name { animation: fadeUp 0.7s ease 0.25s both; }
+.hero-role { animation: fadeUp 0.7s ease 0.4s both; }
+.hero-desc { animation: fadeUp 0.7s ease 0.5s both; }
+.hero-actions { animation: fadeUp 0.7s ease 0.6s both; }
+.hero-meta { animation: fadeUp 0.7s ease 0.75s both; }
+
+/* MOBILE */
+@media (max-width: 860px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 7rem 1.5rem 4rem; }
+  section { padding: 5rem 1.5rem; }
+  .about-layout, .asp-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .research-grid, .skills-layout { grid-template-columns: 1fr; }
+  .proj { grid-template-columns: 1fr; gap: 0.5rem; }
+  .proj-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1.2rem; padding: 2rem 1.5rem; text-align: center; }
+  .footer-links { justify-content: center; }
+  .footer-right { text-align: center; }
+  .hero-meta { gap: 2rem; }
+  .essay-body, .essay-head { padding: 1.5rem 1.8rem; }
+  .save-banner { padding: 0.6rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">My Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#aspirations">Aspirations</a></li>
+    <li><a href="#essay">Essay</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="save-banner">
+  <p>&#9998; Edit mode is on. Click any text to edit it.</p>
+  <div style="display:flex;gap:0.8rem;">
+    <button onclick="saveEdits()">Save Changes</button>
+    <button onclick="toggleEditMode()" style="background:transparent;color:var(--accent);border:1px solid rgba(74,240,196,0.3);">Exit</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Computer Engineer &#183; Robotics &#183; Embedded Systems</p>
+  <h1 class="hero-name">Titilola Kazeem<br/><em>Salisu</em></h1>
+  <p class="hero-role">Building <strong>intelligent machines</strong> at the intersection of hardware and software &#8212; Ibadan, Oyo State, Nigeria</p>
+  <p class="hero-desc" id="heroDesc">I am a first class Computer Engineering graduate with a CGPA of 4.58 out of 5.00, placing me in the top 4% of my graduating class. I work in robotics, embedded systems, and control theory, and I am deeply interested in building machines that can work alongside people in meaningful ways.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#projects">View Projects</a>
+    <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#315a455845585d5e5d5071565c50585d1f525e5c">Get In Touch</a>
+    <a class="btn btn-ghost" href="https://github.com/i-am-the-robot" target="_blank">GitHub &#8599;</a>
+  </div>
+  <div class="hero-meta">
+    <div><span class="meta-val">4.58</span><span class="meta-key">CGPA / 5.00</span></div>
+    <div><span class="meta-val">Top 4%</span><span class="meta-key">Graduating Class</span></div>
+    <div><span class="meta-val">7+</span><span class="meta-key">Hardware Projects</span></div>
+    <div><span class="meta-val">7</span><span class="meta-key">Awards &amp; Scholarships</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh"><span class="sh-num">01</span><h2 class="sh-title">About</h2><span class="sh-sub">Bio &amp; Contact</span></div>
+  <div class="about-layout">
+    <div class="about-body">
+      <p id="about1">My name is Titilola Kazeem Salisu. I studied Computer Engineering at Olabisi Onabanjo University in Ogun State, Nigeria, and graduated in October 2024 with First Class Honours, finishing in the top 4% of my class with a CGPA of 4.58 out of 5.00.</p>
+      <p id="about2">My work lives at the meeting point of control theory, embedded systems, and robotics. What draws me to this field is the satisfaction of building things that actually do something in the real world. Whether it is a robot that keeps itself upright by constantly sensing and correcting, a robotic arm that picks up objects using joint angle calculations, or a bottling machine I fabricated and programmed from scratch, I am most at home when a system I built is working in front of me.</p>
+      <p id="about3">Outside of building, I have spent a lot of time teaching. I tutored engineering students at OOU for five years and recorded a 90% success rate. I taught secondary school students microcontroller programming across the country as part of the NCC Buildathon, and I ran embedded systems training sessions at the OOU Tech Community from 2022 to 2024.</p>
+      <p id="about4">I am a Graduate Member of the Nigeria Society of Engineers and a Pupil Member of COREN. I am currently continuing my studies and I am very open to research collaborations and graduate study opportunities in robotics and AI systems.</p>
+    </div>
+    <div>
+      <!-- PROFILE PHOTO -->
+      <div class="photo-wrapper" id="photoWrapper">
+        <div class="photo-placeholder" id="photoPlaceholder" onclick="document.getElementById('photoInput').click()">
+          <span>&#128247;</span>
+          <span>Click to add photo</span>
+        </div>
+        <img id="profilePhoto" class="profile-photo" style="display:none;" alt="Titilola Kazeem Salisu"/>
+      </div>
+      <label class="photo-upload-btn" onclick="document.getElementById('photoInput').click()">&#8593; Change Photo</label>
+      <input type="file" id="photoInput" accept="image/*"/>
+
+      <div class="info-card">
+        <div class="info-card-header">Contact Information</div>
+        <div class="info-row"><span class="info-key">Mobile</span><span class="info-val" id="infoPhone">+234 816 522 0426</span></div>
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val" id="infoEmail"><a href="/cdn-cgi/l/email-protection#513a253825383d3e3d3011363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="c0abb4a9b4a9acafaca180a7ada1a9aceea3afad">[email&#160;protected]</span></a></span></div>
+        <div class="info-row"><span class="info-key">LinkedIn</span><span class="info-val" id="infoLinkedIn"><a href="https://www.linkedin.com/in/salisutitilola123" target="_blank">in/salisutitilola123 &#8599;</a></span></div>
+        <div class="info-row"><span class="info-key">GitHub</span><span class="info-val" id="infoGitHub"><a href="https://github.com/i-am-the-robot" target="_blank">i-am-the-robot &#8599;</a></span></div>
+        <div class="info-card-header" style="border-top:1px solid var(--border);">Academic Profile</div>
+        <div class="info-row"><span class="info-key">Degree</span><span class="info-val" id="infoDegree">B.Eng. Computer Engineering<br/><em>First Class Honours</em></span></div>
+        <div class="info-row"><span class="info-key">University</span><span class="info-val" id="infoUniversity">Olabisi Onabanjo University, Ogun State</span></div>
+        <div class="info-row"><span class="info-key">CGPA</span><span class="info-val" id="infoCGPA">4.58 / 5.00 &#8212; Top 4%</span></div>
+        <div class="info-row"><span class="info-key">Period</span><span class="info-val" id="infoPeriod">Sep. 2019 &#8211; Oct. 2024</span></div>
+        <div class="info-row"><span class="info-key">Membership</span><span class="info-val" id="infoMembership">NSE Graduate Member, COREN Pupil Member</span></div>
+        <div class="info-row"><span class="info-key">Languages</span><span class="info-val" id="infoLanguages">English, Yoruba</span></div>
+        <div class="info-row"><span class="info-key">Interests</span><span class="info-val" id="infoInterests">Basketball, Writing, Circuitry, Singing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="sh"><span class="sh-num">02</span><h2 class="sh-title">Research Interests</h2><span class="sh-sub">Academic Focus</span></div>
+  <div class="research-grid">
+    <div class="rc">
+      <span class="rc-num">R &#8212; 01</span>
+      <h3>Human&#8211;Robot Interaction Systems</h3>
+      <p>I am interested in how people and robots can work together more naturally. This means studying how robots can read intent, respond in real time, and operate safely in environments designed for humans rather than machines.</p>
+    </div>
+    <div class="rc">
+      <span class="rc-num">R &#8212; 02</span>
+      <h3>Robotics Systems in Healthcare</h3>
+      <p>There is enormous potential for robots in clinical and rehabilitation settings. I want to explore how robotic systems can assist patients with motor disabilities, support medical staff, and improve outcomes in environments where precision and care matter most.</p>
+    </div>
+    <div class="rc">
+      <span class="rc-num">R &#8212; 03</span>
+      <h3>Human Emotion Analysis via Robotics</h3>
+      <p>I find it fascinating that robots could one day read emotional states from physiological and behavioural signals. Systems that respond to how a person is feeling, not just what they command, open up a very different kind of human&#8211;machine relationship.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sh"><span class="sh-num">03</span><h2 class="sh-title">Projects</h2><span class="sh-sub">Engineering Work</span></div>
+  <div class="projects-list">
+
+    <!-- P0: Fixed-Wing Drone (group project) -->
+    <div class="proj featured" style="border-left-color: var(--accent2);">
+      <span class="proj-label blue">&#9733; Group Project &#8212; 2026</span>
+      <h3 class="proj-title">Fixed-Wing Drone &#8212; Full Fabrication Group Project at RAIN</h3>
+      <div class="proj-grid">
+        <div>
+          <p class="proj-desc">This was a group project I worked on with my colleagues at Robotics and Artificial Intelligence, Nigeria (RAIN). We built a fixed-wing drone from scratch, starting with the airframe which we fabricated ourselves from styrofoam. We integrated brushless motors driven by ESCs for propulsion, and used a transmitter and receiver system for radio control. Every part of the build, from cutting and shaping the body to wiring and testing the electronics, was done by the team. It was a great experience working through the aerodynamics, balancing the centre of gravity, and doing ground tests before flight.</p>
+          <div class="proj-tags">
+            <span class="tag hi2">Fixed-Wing Airframe</span><span class="tag hi2">Brushless Motors</span><span class="tag hi2">ESC (Electronic Speed Controller)</span><span class="tag hi2">Transmitter and Receiver</span><span class="tag">Styrofoam Fabrication</span><span class="tag">Full Body Fabrication</span><span class="tag">Aerodynamics</span><span class="tag">Group Project</span><span class="tag">RAIN</span>
+          </div>
+        </div>
+        <div class="sys-diagram">
+          <span class="sd-label">System Overview</span>
+          <div class="sd-line"><span class="sd-key blue">Airframe</span>Styrofoam, fully fabricated</div>
+          <div class="sd-line"><span class="sd-key blue">Propulsion</span>Brushless Motors</div>
+          <div class="sd-line"><span class="sd-key blue">Speed Ctrl</span>ESC (Electronic Speed Controller)</div>
+          <div class="sd-line"><span class="sd-key blue">Control</span>Transmitter and Receiver (RC)</div>
+          <div class="sd-line"><span class="sd-key blue">Team</span>RAIN Colleagues</div>
+          <div class="sd-line"><span class="sd-key blue">Build</span>Full fabrication from scratch</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P1: Self-Balancing Robot (latest personal project) -->
+    <div class="proj featured">
+      <span class="proj-label">&#9733; Latest Personal Project &#8212; 2026</span>
+      <h3 class="proj-title">Self-Balancing Robot &#8212; PID Control System</h3>
+      <div class="proj-grid">
+        <div>
+          <p class="proj-desc">I designed and built a two-wheeled robot that keeps itself upright using PID control. The MPU6050 gyroscope and accelerometer feeds angle data to an Arduino Nano about 100 times per second. The controller calculates how far the robot has tilted, how fast it is falling, and how long it has been off balance, then adjusts the motor speeds through an L298N driver to correct the lean before it tips over. Getting the three gain values right took a lot of physical testing. Too much correction and the robot shakes violently. Too little and it falls. Finding that balance taught me more about control systems than anything I had read.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Arduino Nano</span><span class="tag hi">MPU6050 IMU</span><span class="tag hi">PID Control</span><span class="tag hi">L298N Motor Driver</span><span class="tag">DC Motors</span><span class="tag">2x 18650 Li-ion</span><span class="tag">C++ / Arduino IDE</span><span class="tag">I2C Protocol</span>
+          </div>
+        </div>
+        <div class="sys-diagram">
+          <span class="sd-label">System Architecture</span>
+          <div class="sd-line"><span class="sd-key">Sensor</span>MPU6050 via I2C</div>
+          <div class="sd-line"><span class="sd-key">MCU</span>Arduino Nano</div>
+          <div class="sd-line"><span class="sd-key">Algorithm</span>PID Loop at 100Hz</div>
+          <div class="sd-line"><span class="sd-key">Formula</span>Kp.e + Ki.&int;e + Kd.de/dt</div>
+          <div class="sd-line"><span class="sd-key">Setpoint</span>0 degrees (vertical)</div>
+          <div class="sd-line"><span class="sd-key">Driver</span>L298N via PWM</div>
+          <div class="sd-line"><span class="sd-key">Actuators</span>Left and Right DC Motors</div>
+          <div class="sd-line"><span class="sd-key">Power</span>2x 18650 at 7.4V</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="proj featured blue">
+      <span class="proj-label blue">&#9733; Featured &#8212; 2025</span>
+      <h3 class="proj-title">Assistive Robot &#8212; 4-DOF Robotic Arm with Bluetooth Control</h3>
+      <div class="proj-grid">
+        <div>
+          <p class="proj-desc">This project was about giving someone the ability to pick up objects remotely. I built a four-joint robotic arm and designed a control interface using MIT App Inventor so the robot could be operated from a phone over Bluetooth. I used the principle of forward kinematics to work out where the arm's end point would be based on the angles of each joint. The ESP32 handles the Bluetooth communication and sends PWM signals to four servos. The robot also moves on wheels driven by 12V DC motors through an L298N board, all running off two 18650 batteries regulated down through a buck converter.</p>
+          <div class="proj-tags">
+            <span class="tag hi2">ESP32</span><span class="tag hi2">4x Servo Motors</span><span class="tag hi2">Forward Kinematics</span><span class="tag hi2">MIT App Inventor</span><span class="tag">Bluetooth Module</span><span class="tag">L298N Motor Driver</span><span class="tag">12V DC Motors</span><span class="tag">2x 18650 Li-ion</span><span class="tag">Buck Converter</span><span class="tag">4-DOF Arm</span>
+          </div>
+        </div>
+        <div class="sys-diagram">
+          <span class="sd-label">System Architecture</span>
+          <div class="sd-line"><span class="sd-key blue">MCU</span>ESP32</div>
+          <div class="sd-line"><span class="sd-key blue">Comms</span>Bluetooth Module</div>
+          <div class="sd-line"><span class="sd-key blue">Interface</span>MIT App Inventor (Mobile)</div>
+          <div class="sd-line"><span class="sd-key blue">Arm</span>4x Servos, 4 degrees of freedom</div>
+          <div class="sd-line"><span class="sd-key blue">Kinematics</span>Forward Kinematics</div>
+          <div class="sd-line"><span class="sd-key blue">Drive</span>L298N, 12V DC Motors</div>
+          <div class="sd-line"><span class="sd-key blue">Power</span>2x 18650 + Buck Converter</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="proj featured orange">
+      <span class="proj-label orange">&#9733; Featured &#8212; 2025</span>
+      <h3 class="proj-title">Automated Bottling System &#8212; Custom Fabricated Mechatronic System</h3>
+      <div class="proj-grid">
+        <div>
+          <p class="proj-desc">I built this bottling system from the ground up, including fabricating the physical body myself. A stepper motor moves the conveyor belt to advance each bottle into position. A second stepper motor turns a rotating wheel to align the bottle precisely under the filling nozzle. Once in position, a water pump fills the bottle. I coordinated all three subsystems through microcontroller logic so the sequence runs automatically without human intervention. This was probably the most complete engineering project I have done, combining mechanical fabrication, electronics, and software all in one system.</p>
+          <div class="proj-tags">
+            <span class="tag hi3">Stepper Motor (Conveyor)</span><span class="tag hi3">Stepper Motor (Rotating Wheel)</span><span class="tag hi3">Water Pump</span><span class="tag hi3">Custom Fabricated Body</span><span class="tag">DC Voltage Supply</span><span class="tag">Jumper Wiring</span><span class="tag">Mechatronics</span>
+          </div>
+        </div>
+        <div class="sys-diagram">
+          <span class="sd-label">Production Line Flow</span>
+          <div class="sd-line"><span class="sd-key orange">Stage 1</span>Conveyor belt advances bottle</div>
+          <div class="sd-line"><span class="sd-key orange">Stage 2</span>Rotating wheel positions bottle</div>
+          <div class="sd-line"><span class="sd-key orange">Stage 3</span>Water pump fills bottle</div>
+          <div class="sd-line"><span class="sd-key orange">Actuators</span>2x Stepper Motors + Pump</div>
+          <div class="sd-line"><span class="sd-key orange">Body</span>Custom Fabricated Frame</div>
+          <div class="sd-line"><span class="sd-key orange">Power</span>DC Voltage Supply</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="proj">
+      <span class="proj-year">2025</span>
+      <div>
+        <h3 class="proj-title">Obstacle-Avoidance Smart Car &#8212; Autonomous and Manual Modes</h3>
+        <p class="proj-desc">This car can navigate on its own or be controlled manually through a phone app I built with MIT App Inventor. In autonomous mode, an ultrasonic sensor detects obstacles ahead. When something is in the way, a servo motor sweeps left and right to measure both sides and pick the better path before the car turns. In manual mode, the Bluetooth module connects to the app and lets someone drive it directly. A Raspberry Pi Pico handles all the logic, with a L298N driver powering the 12V DC motors from three 18650 cells.</p>
+        <div class="proj-tags">
+          <span class="tag hi">Raspberry Pi Pico</span><span class="tag hi">MIT App Inventor</span><span class="tag">HC-SR04 Ultrasonic</span><span class="tag">Servo (Angle Sweep)</span><span class="tag">Bluetooth Module</span><span class="tag">L298N Motor Driver</span><span class="tag">12V DC Motors</span><span class="tag">3x 18650 Li-ion</span>
+        </div>
+      </div>
+      <span class="proj-type">Personal</span>
+    </div>
+
+    <!-- P5 -->
+    <div class="proj">
+      <span class="proj-year">2024</span>
+      <div>
+        <h3 class="proj-title">Wireless Home Automation System &#8212; Multi-Protocol IoT</h3>
+        <p class="proj-desc">This was my undergraduate research project under Dr. Olusesi A.T. The goal was to control home appliances wirelessly and study how well different wireless protocols hold up when walls, distance, and interference get in the way. I used a Raspberry Pi Pico W to switch relay modules connected to real AC mains sockets. I built a custom control app in MIT App Inventor and connected it over Bluetooth. I also integrated Blynk for Wi-Fi and internet-based control. The code was written in Python and run through Thonny IDE. Power came from four 18650 batteries regulated by a buck converter.</p>
+        <div class="proj-tags">
+          <span class="tag hi">Raspberry Pi Pico W</span><span class="tag hi">MIT App Inventor</span><span class="tag">Python / Thonny IDE</span><span class="tag">Blynk Platform</span><span class="tag">Bluetooth Module</span><span class="tag">Relay Module</span><span class="tag">AC Mains Socket</span><span class="tag">Buck Converter</span><span class="tag">4x 18650 Li-ion</span>
+        </div>
+      </div>
+      <span class="proj-type">Undergrad</span>
+    </div>
+
+    <!-- P6 -->
+    <div class="proj">
+      <span class="proj-year">2023&#8211;24</span>
+      <div>
+        <h3 class="proj-title">Network Analysis and Diagnostics Tool</h3>
+        <p class="proj-desc">During my internship at Citadel Oracle Concept Ltd, I wrote a Python program to test and analyse network connections. It was used to run diagnostics on client systems, measure connection quality, and produce readable reports. I also helped customers understand better PC management practices to reduce the issues they were bringing in.</p>
+        <div class="proj-tags">
+          <span class="tag hi">Python</span><span class="tag">Network Analysis</span><span class="tag">Diagnostics</span><span class="tag">Scripting</span>
+        </div>
+      </div>
+      <span class="proj-type">Internship</span>
+    </div>
+
+  </div>
+
+  <!-- MINI PROJECTS -->
+  <div style="margin-top:3rem;">
+    <div style="display:flex;align-items:baseline;gap:1.2rem;margin-bottom:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);">
+      <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.2em;">+</span>
+      <h3 style="font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--text);">Mini Projects and Explorations</h3>
+      <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;margin-left:auto;text-transform:uppercase;">Along the way</span>
+    </div>
+    <div class="mini-grid">
+
+      <div class="mini-card">
+        <div class="mini-top">
+          <span class="mini-label">Group Project &#183; RAIN</span>
+          <span class="mini-year">2025</span>
+        </div>
+        <h4 class="mini-title">Height Measuring System</h4>
+        <p class="mini-desc">Built with colleagues at RAIN. An ESP32 reads distance from an ultrasonic sensor and converts it into a person's height measurement. Results are published over MQTT so readings can be monitored remotely from another device on the same network.</p>
+        <div class="proj-tags" style="margin-top:0.8rem;">
+          <span class="tag hi">ESP32</span><span class="tag">Ultrasonic Sensor</span><span class="tag">MQTT Protocol</span><span class="tag">Group Project</span>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <div class="mini-top">
+          <span class="mini-label">Personal Project</span>
+          <span class="mini-year">2024</span>
+        </div>
+        <h4 class="mini-title">Security Locking System</h4>
+        <p class="mini-desc">A keypad-controlled door lock built around an Arduino. The user enters a code on the keypad and the result shows on an LCD display. A correct code triggers the lock mechanism and access is granted. Wrong entries are flagged on screen.</p>
+        <div class="proj-tags" style="margin-top:0.8rem;">
+          <span class="tag hi">Arduino</span><span class="tag">Keypad</span><span class="tag">LCD Display</span><span class="tag">Access Control</span>
+        </div>
+      </div>
+
+      <div class="mini-card" id="moreProjects">
+        <div class="mini-top">
+          <span class="mini-label">Various</span>
+          <span class="mini-year">Ongoing</span>
+        </div>
+        <h4 class="mini-title">More Projects Coming</h4>
+        <p class="mini-desc">There are more mini projects and explorations built along the way, from sensor experiments and circuit prototypes to small automation scripts. This section will be updated as more are documented.</p>
+        <div class="proj-tags" style="margin-top:0.8rem;">
+          <span class="tag">Embedded Systems</span><span class="tag">Sensors</span><span class="tag">Prototyping</span><span class="tag">Automation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sh"><span class="sh-num">04</span><h2 class="sh-title">Skills and Tools</h2><span class="sh-sub">Technical Stack</span></div>
+  <div class="skills-layout">
+    <div class="sg"><span class="sg-title">// Languages</span><ul><li>Python</li><li>MicroPython</li><li>C and C++</li><li>Arduino IDE</li><li>ROS2</li></ul></div>
+    <div class="sg"><span class="sg-title">// Hardware and Control</span><ul><li>Arduino, ESP32, Raspberry Pi Pico</li><li>MPU6050, L298N, HC-SR04</li><li>PID Control Theory</li><li>Forward Kinematics</li><li>Stepper and Servo Motors</li><li>Circuit Design and Prototyping</li><li>Proteus (Simulation)</li></ul></div>
+    <div class="sg"><span class="sg-title">// AI and Data</span><ul><li>Machine Learning (Introductory)</li><li>Agentic AI Development</li><li>Data Analysis with Excel</li><li>Data Visualisation</li></ul></div>
+    <div class="sg"><span class="sg-title">// Software Tools</span><ul><li>MIT App Inventor</li><li>Thonny IDE</li><li>Blynk Platform</li><li>Cinema 4D</li><li>Fusion 360</li><li>Ubuntu / WSL (Windows)</li></ul></div>
+    <div class="sg"><span class="sg-title">// Robotics Concepts</span><ul><li>PID Feedback Control</li><li>Forward Kinematics</li><li>Sensor Fusion (IMU)</li><li>Autonomous Navigation</li><li>Human-Robot Interaction</li><li>Mechatronic Systems Design</li></ul></div>
+    <div class="sg"><span class="sg-title">// Professional</span><ul><li>Technical Tutoring</li><li>Research and Documentation</li><li>Public Speaking</li><li>Curriculum Design</li><li>Team Collaboration</li></ul></div>
+  </div>
+</section>
+
+<!-- ASPIRATIONS -->
+<section id="aspirations">
+  <div class="sh"><span class="sh-num">05</span><h2 class="sh-title">Aspirations</h2><span class="sh-sub">Long-Term Direction</span></div>
+  <div class="asp-layout">
+    <div class="asp-text">
+      <p id="asp1">What I want most is to do meaningful work in robotics research, specifically in systems that interact with people in real and useful ways. The projects I have built so far have mostly been about the hardware side of that, and I want to go deeper into the science behind it.</p>
+      <p id="asp2">I am actively looking to pursue <strong>a Master's or PhD in Robotics, Mechatronics, or AI-driven Embedded Systems</strong> at a university where research in human-robot interaction or healthcare robotics is taken seriously. I want to contribute to work that actually gets used, not just published.</p>
+      <p id="asp3">In the long term, I want to come back to Nigeria and <strong>build something that lasts</strong> here. A robotics lab, a training programme, something that makes it easier for the next generation of engineers in this country to build things that matter. The knowledge is out there. The talent is here. Someone needs to bring them together.</p>
+      <p id="asp4">I also believe strongly in teaching. I have spent years doing it informally and I have seen how much difference it makes when someone explains a concept the right way at the right time. I plan to keep doing that regardless of where my research takes me.</p>
+    </div>
+    <div class="asp-goals">
+      <div class="asp-goal"><span class="asp-goal-num">01</span>Pursue a Master's or PhD in Robotics or AI Systems</div>
+      <div class="asp-goal"><span class="asp-goal-num">02</span>Conduct research in human-robot interaction and healthcare robotics</div>
+      <div class="asp-goal"><span class="asp-goal-num">03</span>Build more complex and autonomous robotic systems</div>
+      <div class="asp-goal"><span class="asp-goal-num">04</span>Establish a robotics lab in Nigeria</div>
+      <div class="asp-goal"><span class="asp-goal-num">05</span>Mentor young engineers across West Africa</div>
+      <div class="asp-goal"><span class="asp-goal-num">06</span>Publish research in robotics and AI journals</div>
+    </div>
+  </div>
+</section>
+
+<!-- ESSAY -->
+<section id="essay">
+  <div class="sh"><span class="sh-num">06</span><h2 class="sh-title">Personal Essay</h2><span class="sh-sub">A Personal Reflection</span></div>
+  <div class="essay-wrap">
+    <div class="essay-card">
+      <div class="essay-head">
+        <span class="essay-label">Written by &#8212; Titilola Kazeem Salisu</span>
+        <h3 class="essay-title">Why I Build Machines</h3>
+        <p class="essay-author">On engineering, purpose, and what it means to build something that works</p>
+      </div>
+      <div class="essay-body">
+        <p><span class="essay-drop">T</span>he first time I made a motor spin with code I had written myself, I felt something shift. It was not the motor that excited me. It was the realisation that the distance between an idea and a physical action could be closed by a person willing to learn the language between them. That language is engineering, and I have been speaking it ever since.</p>
+        <p>I grew up drawn to things that moved with purpose. A machine that can sense what is happening around it, decide what to do, and act on that decision is one of the most interesting things a person can build. My self-balancing robot made that very real for me. Tuning a PID controller is essentially a conversation with physics. Push the correction too hard and the robot shakes itself apart. Too soft and it falls. Getting it to stand still and hold itself there felt like a genuine achievement, because it required understanding the system deeply enough to know which way to adjust when something went wrong.</p>
+        <p>That kind of problem does not have a single answer. It requires iteration, observation, and a willingness to be wrong several times before getting it right. I think that is the most honest description of what engineering actually is. The textbooks tell you the theory. The hardware teaches you the rest.</p>
+        <p>Throughout my degree, while tutoring students and teaching at the NCC Buildathon, I kept noticing something. The students who struggled most were not the ones who lacked intelligence. They were the ones who had never been given the chance to break something and fix it themselves. Hands-on experience changes how you think about a problem. I believe that deeply, and it shapes how I teach.</p>
+        <p>My interest in human-robot interaction and healthcare robotics comes from a simple question: what is the most useful thing a robot could do? I keep coming back to the same answer. The most useful thing is to help a person who cannot do something without help. A robot that supports someone recovering from a stroke, or one that recognises when a person is in distress and responds appropriately, is worth far more than a robot that performs a task in a factory. That is the direction I want to move in.</p>
+        <p>Nigeria gave me the foundation. What I want now is to take what I have learned, go further with it, and eventually bring it back in a form that is genuinely useful here. Africa does not lack talent. What it needs is infrastructure, opportunity, and people who are willing to build both. I intend to be one of them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="sh"><span class="sh-num">07</span><h2 class="sh-title">Awards and Honours</h2><span class="sh-sub">Recognition</span></div>
+  <table class="awards-table">
+    <thead><tr><th>Year</th><th>Award</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td class="aw-year">2025</td><td><div class="aw-name">Most Valuable Personality of the Year</div><div class="aw-org">Robotics and Artificial Intelligence, Nigeria (RAIN)</div></td><td><span class="tag hi2">Award</span></td></tr>
+      <tr><td class="aw-year">2025</td><td><div class="aw-name">Most Focused Personality of the Year</div><div class="aw-org">Robotics and Artificial Intelligence, Nigeria (RAIN)</div></td><td><span class="tag hi2">Award</span></td></tr>
+      <tr><td class="aw-year">2025</td><td><div class="aw-name">RAIN 2025 Scholarship Award</div><div class="aw-org">Robotics and Artificial Intelligence, Nigeria</div></td><td><span class="tag hi">Scholarship</span></td></tr>
+      <tr><td class="aw-year">2025</td><td><div class="aw-name">Dream to Legacy Career Development Scholarship</div><div class="aw-org">Dream to Legacy Initiatives</div></td><td><span class="tag hi">Scholarship</span></td></tr>
+      <tr><td class="aw-year">2024</td><td><div class="aw-name">Professor Agboola Prize Award</div><div class="aw-org">Olabisi Onabanjo University &#8212; Academic Excellence</div></td><td><span class="tag">Academic</span></td></tr>
+      <tr><td class="aw-year">2024</td><td><div class="aw-name">Honours Award for First Class Graduates</div><div class="aw-org">Faculty of Engineering, Olabisi Onabanjo University</div></td><td><span class="tag">Academic</span></td></tr>
+      <tr><td class="aw-year">2019</td><td><div class="aw-name">Ogunbade Foundation Scholarship</div><div class="aw-org">Ogunbade Foundation</div></td><td><span class="tag hi">Scholarship</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sh"><span class="sh-num">08</span><h2 class="sh-title">Contact</h2><span class="sh-sub">Get In Touch</span></div>
+  <div class="contact-layout">
+    <div class="contact-intro">
+      <h3>Open to research, collaboration and new opportunities</h3>
+      <p>If you are working on something interesting in robotics or embedded systems, thinking about a collaboration, or you just want to talk about what I have been building, I would genuinely love to hear from you. Do not hesitate to reach out through any of the channels below.</p>
+      <div class="contact-list">
+        <a class="cl-item" href="/cdn-cgi/l/email-protection#99f2edf0edf0f5f6f5f8d9fef4f8f0f5b7faf6f4"><span class="cl-icon">&#9993;</span><div><span class="cl-label">Email</span><span class="__cf_email__" data-cfemail="83e8f7eaf7eaefecefe2c3e4eee2eaefade0ecee">[email&#160;protected]</span></div></a>
+        <a class="cl-item" href="tel:+2348165220426"><span class="cl-icon">&#9743;</span><div><span class="cl-label">Mobile</span>+234 816 522 0426</div></a>
+        <a class="cl-item" href="https://www.linkedin.com/in/salisutitilola123" target="_blank"><span class="cl-icon">&#8599;</span><div><span class="cl-label">LinkedIn</span>linkedin.com/in/salisutitilola123</div></a>
+        <a class="cl-item" href="https://github.com/i-am-the-robot" target="_blank"><span class="cl-icon">&#9096;</span><div><span class="cl-label">GitHub</span>github.com/i-am-the-robot</div></a>
+        <div class="cl-item"><span class="cl-icon">&#8982;</span><div><span class="cl-label">Location</span>Ibadan, Oyo State, Nigeria</div></div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="cf-head">Send a Message</div>
+      <div class="cf-body">
+        <div class="form-status" id="formStatus"></div>
+        <!-- 
+          HOW TO ACTIVATE THE CONTACT FORM:
+          1. Go to https://formspree.io and sign up for free
+          2. Create a new form and copy your form ID (looks like: xpzgkwab)
+          3. Replace YOUR_FORMSPREE_ID below with your actual ID
+          That's it. Messages will be emailed to ktitilola@gmail.com
+        -->
+        <form id="contactForm">
+          <div class="fg"><label>Name</label><input type="text" name="name" placeholder="Your full name" required/></div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="fg"><label>Subject</label><input type="text" name="subject" placeholder="Research, collaboration, opportunity..."/></div>
+          <div class="fg"><label>Message</label><textarea name="message" placeholder="What is on your mind?" required></textarea></div>
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">Send Message &#8594;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <p>&#169; <span id="copyrightYear"></span> <span class="fa" id="secretTrigger" style="cursor:default;user-select:none;">Titilola Kazeem Salisu</span></p>
+    <p class="footer-sub">Computer Engineer &amp; Roboticist &mdash; Nigeria</p>
+  </div>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#244f504d504d484b4845644349454d480a474b49" class="footer-link">Email</a>
+    <a href="https://www.linkedin.com/in/salisutitilola123" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="https://github.com/i-am-the-robot" target="_blank" class="footer-link">GitHub</a>
+  </div>
+  </footer>
+
+<!-- edit mode triggered secretly via footer -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const EDIT_PASSWORD_HASH = 'cea2f29c5675642b71534fd1a2320dd0a86796e9c18e2a93f5101db855c4c5a4';
+const editableIds = ['heroDesc','about1','about2','about3','about4','asp1','asp2','asp3','asp4'];
+const infoIds = ['infoPhone','infoEmail','infoLinkedIn','infoGitHub','infoDegree','infoUniversity','infoCGPA','infoPeriod','infoMembership','infoLanguages','infoInterests'];
+let editMode = false;
+let clickCount = 0;
+let clickTimer = null;
+
+async function hashInput(input) {
+  var encoded = new TextEncoder().encode(input);
+  var hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
+  var hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+}
+
+async function toggleEditMode() {
+  if (!editMode) {
+    var pwd = prompt('Enter your edit password:');
+    if (pwd === null) return;
+    var hashed = await hashInput(pwd);
+    if (hashed !== EDIT_PASSWORD_HASH) { alert('Incorrect password. Access denied.'); return; }
+  }
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  var banner = document.querySelector('.save-banner');
+  if (banner) banner.style.display = editMode ? 'flex' : 'none';
+  editableIds.concat(infoIds).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.contentEditable = editMode ? 'true' : 'false';
+  });
+}
+
+function saveEdits() {
+  var data = {};
+  editableIds.concat(infoIds).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) data[id] = el.innerHTML;
+  });
+  try {
+    localStorage.setItem('portfolioEdits', JSON.stringify(data));
+    alert('Changes saved! They will stay in this browser.\n\nTo make permanent, update the HTML file too.');
+  } catch(e) {
+    alert('Could not save. Please update the HTML file directly.');
+  }
+  // Exit edit mode directly without password check
+  editMode = true;
+  toggleEditMode();
+}
+
+function handlePhoto(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    showPhoto(e.target.result);
+    try { localStorage.setItem('profilePhoto', e.target.result); } catch(ex) {}
+  };
+  reader.readAsDataURL(file);
+}
+
+function showPhoto(src) {
+  var ph = document.getElementById('photoPlaceholder');
+  var img = document.getElementById('profilePhoto');
+  if (ph) ph.style.display = 'none';
+  if (img) { img.src = src; img.style.display = 'block'; }
+}
+
+function showStatus(type, msg) {
+  var el = document.getElementById('formStatus');
+  if (!el) return;
+  el.className = 'form-status ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function initPage() {
+  // Dynamic copyright year
+  var yearEl = document.getElementById('copyrightYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Load saved edits
+  try {
+    var saved = localStorage.getItem('portfolioEdits');
+    if (saved) {
+      var data = JSON.parse(saved);
+      Object.keys(data).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.innerHTML = data[id];
+      });
+    }
+    var savedPhoto = localStorage.getItem('profilePhoto');
+    if (savedPhoto) showPhoto(savedPhoto);
+  } catch(e) {}
+
+  // Photo input
+  var photoInput = document.getElementById('photoInput');
+  if (photoInput) photoInput.addEventListener('change', handlePhoto);
+
+  // SECRET TRIGGER: click name in footer 5 times within 1.5s
+  var trigger = document.getElementById('secretTrigger');
+  if (trigger) {
+    trigger.addEventListener('click', function() {
+      clickCount++;
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(function() { clickCount = 0; }, 1500);
+      if (clickCount >= 5) {
+        clickCount = 0;
+        clearTimeout(clickTimer);
+        toggleEditMode();
+      }
+    });
+  }
+
+  // Contact form
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      document.getElementById('formStatus').style.display = 'none';
+      var name    = form.name.value.trim();
+      var email   = form.email.value.trim();
+      var subject = form.subject.value.trim();
+      var message = form.message.value.trim();
+      var FORMSPREE_ID = 'mzdjbdbr';
+      if (FORMSPREE_ID !== 'YOUR_FORMSPREE_ID') {
+        fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, subject: subject, message: message })
+        }).then(function(res) {
+          if (res.ok) { showStatus('success', 'Message sent! I will get back to you soon.'); form.reset(); }
+          else { showStatus('error', 'Something went wrong. Please email ktitilola@gmail.com directly.'); }
+          btn.textContent = 'Send Message'; btn.disabled = false;
+        }).catch(function() {
+          showStatus('error', 'Could not send. Please email ktitilola@gmail.com directly.');
+          btn.textContent = 'Send Message'; btn.disabled = false;
+        });
+      } else {
+        var mailto = 'mailto:ktitilola@gmail.com'
+          + '?subject=' + encodeURIComponent(subject || 'Message from portfolio')
+          + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
+        window.location.href = mailto;
+        showStatus('success', 'Opening your email app...');
+        form.reset();
+        btn.textContent = 'Send Message'; btn.disabled = false;
+      }
+    });
+  }
+
+  // Nav highlight
+  var secs = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  window.addE
