@@ -134,6 +134,23 @@ section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; pad
 .sd-key.orange { color: var(--accent3); }
 .proj-type { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; padding-top: 0.2rem; white-space: nowrap; }
 
+/* ARTICLES */
+.articles-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.article-card { background: var(--bg2); padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+.article-card:last-child { border-bottom: none; }
+.article-card:hover { background: var(--surface); }
+.article-meta { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+.article-type { font-family: var(--mono); font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+.article-type.post { border: 1px solid rgba(91,141,239,0.3); color: var(--accent2); }
+.article-type.doc { border: 1px solid rgba(74,240,196,0.3); color: var(--accent); }
+.article-type.report { border: 1px solid rgba(240,160,74,0.3); color: var(--accent3); }
+.article-date { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); }
+.article-title { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.article-desc { font-size: 0.88rem; color: var(--text2); line-height: 1.8; margin-bottom: 1rem; }
+.article-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.article-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.62rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 2px; transition: all 0.2s; }
+.article-link:hover { color: var(--accent); border-color: rgba(74,240,196,0.3); }
+
 /* SKILLS */
 .skills-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
 .sg { background: var(--bg2); padding: 2rem; }
@@ -396,6 +413,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
             <span class="tag hi">Arduino Uno</span><span class="tag hi">MPU6050 IMU</span><span class="tag hi">PID Control</span><span class="tag hi">L298N Motor Driver</span><span class="tag">DC Motors</span><span class="tag">2x 18650 Li-ion</span><span class="tag">C++ / Arduino IDE</span><span class="tag">I2C Protocol</span>
           </div>
           <a href="https://github.com/i-am-the-robot/Self-balancing-robot-PID" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.8rem;font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">&#9096; View on GitHub</a>
+          <a href="https://www.linkedin.com/pulse/what-building-self-balancing-robot-taught-me-after-many-titilola-xlhef?utm_source=share&utm_medium=member_android&utm_campaign=share_via" class="proj-link">&#8599; Article</a>
         </div>
         <div class="sys-diagram">
           <span class="sd-label">System Architecture</span>
@@ -555,6 +573,29 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
     </div>
   </div>
 </section>
+
+<!-- ARTICLES -->
+
+<section id="articles">
+  <div class="sh"><span class="sh-num">04</span><h2 class="sh-title">Articles</h2><span class="sh-sub">Writing and Documentation</span></div>
+  <div class="articles-list">
+
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-type post">Article</span>
+        <span class="article-date">2026</span>
+      </div>
+      <h3 class="article-title">What Building a Self-Balancing Robot Taught Me After Many Days of Turning</h3>
+      <p class="article-desc">This article is an account of my experience from building my Self-balancing Robot project.</p>
+      <div class="article-links">
+        <a href="https://www.linkedin.com/pulse/what-building-self-balancing-robot-taught-me-after-many-titilola-xlhef?utm_source=share&utm_medium=member_android&utm_campaign=share_via" class="article-link">&#8599; Read on LinkedIn</a>
+        <a href="https://github.com/i-am-the-robot/Self-balancing-robot-PID" class="article-link">&#9096; GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
 
 <!-- SKILLS -->
 <section id="skills">
