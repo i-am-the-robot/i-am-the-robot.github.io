@@ -159,6 +159,19 @@ section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; pad
 .sg li { font-size: 0.88rem; color: var(--text2); display: flex; align-items: center; gap: 0.6rem; }
 .sg li::before { content: '—'; color: var(--muted); font-size: 0.7rem; }
 
+/* WORK EXPERIENCE */
+.exp-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.exp-card { background: var(--bg2); padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+.exp-card:last-child { border-bottom: none; }
+.exp-card:hover { background: var(--surface); }
+.exp-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 1rem; }
+.exp-role { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--text); }
+.exp-period { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; padding-top: 0.2rem; }
+.exp-org { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 0.9rem; }
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-points li { font-size: 0.88rem; color: var(--text2); line-height: 1.75; display: flex; gap: 0.6rem; }
+.exp-points li::before { content: '—'; color: var(--muted); font-size: 0.7rem; flex-shrink: 0; padding-top: 0.2rem; }
+  
 /* ASPIRATIONS */
 .asp-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; }
 .asp-text p { font-size: 0.97rem; color: var(--text2); line-height: 1.9; margin-bottom: 1.4rem; }
@@ -226,6 +239,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 .footer-link:hover { color: var(--accent); }
 .footer-right { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; text-align: right; }
 .fa { color: var(--accent); }
+
 
 /* SAVE BANNER */
 .save-banner { position: fixed; top: 60px; left: 0; right: 0; z-index: 199; background: rgba(74,240,196,0.1); border-bottom: 1px solid rgba(74,240,196,0.2); padding: 0.6rem 4rem; display: none; align-items: center; justify-content: space-between; }
@@ -599,7 +613,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="sh"><span class="sh-num">04</span><h2 class="sh-title">Skills and Tools</h2><span class="sh-sub">Technical Stack</span></div>
+  <div class="sh"><span class="sh-num">05</span><h2 class="sh-title">Skills and Tools</h2><span class="sh-sub">Technical Stack</span></div>
   <div class="skills-layout">
     <div class="sg"><span class="sg-title">// Languages</span><ul><li>Python</li><li>MicroPython</li><li>C and C++</li><li>Arduino IDE</li><li>ROS2</li></ul></div>
     <div class="sg"><span class="sg-title">// Hardware and Control</span><ul><li>Arduino, ESP32, Raspberry Pi Pico</li><li>MPU6050, L298N, HC-SR04</li><li>PID Control Theory</li><li>Forward Kinematics</li><li>Stepper and Servo Motors</li><li>Circuit Design and Prototyping</li><li>Proteus (Simulation)</li></ul></div>
@@ -610,9 +624,51 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
   </div>
 </section>
 
+<!-- WORK EXPERIENCE -->
+
+<section id="experience">
+  <div class="sh"><span class="sh-num">06</span><h2 class="sh-title">Experience</h2><span class="sh-sub">Technical Roles</span></div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-top">
+        <span class="exp-role">Robotics and Autonomous Systems Developer — RAIN</span>
+        <span class="exp-period">Oct. 2025 – Present</span>
+      </div>
+      <div class="exp-org">Robotics and Artificial Intelligence Nigeria, Oyo State</div>
+      <ul class="exp-points">
+        <li>Studied Product Design using Fusion 360 and Circuit Design for hardware development and prototyping.</li>
+        <li>Applying Control Systems and Advanced Control Systems theory to real robotics builds.</li>
+        <li>Learning Robotic Aided Manufacturing and Digital Twin concepts for modern automation workflows.</li>
+        <li>Building skills in Path Planning, SLAM and Computer Vision for autonomous robot navigation.</li>
+        <li>Exploring Deep Learning and its applications in robotics perception and decision making.</li>
+        <li>Developing in ROS for robot software architecture, communication and system integration.</li>
+        <li>Acquiring additional technical skills in Web Development and SQL.</li>
+        <li>Assisting younger colleagues on robotics operating systems and embedded systems fundamentals.</li>
+        <li>Collaborating on group projects involving full hardware fabrication and system integration.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-top">
+        <span class="exp-role">Intern — Tech With Khalid</span>
+        <span class="exp-period">2019 – 2023</span>
+      </div>
+      <div class="exp-org">Olabisi Onabanjo University, Nigeria</div>
+      <ul class="exp-points">
+        <li>Designed and developed embedded systems and their software, gaining practical experience in hardware-software integration, real-time computing and sensor-based decision making.</li>
+        <li>Developed circuits based on user specifications and improved efficiency through thorough circuit analysis before implementation.</li>
+        <li>Built a smart car controllable through a mobile phone interface over Bluetooth communication.</li>
+        <li>Designed 3D animations for automation dealing with drug production using Cinema 4D.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+  
 <!-- ASPIRATIONS -->
 <section id="aspirations">
-  <div class="sh"><span class="sh-num">05</span><h2 class="sh-title">Aspirations</h2><span class="sh-sub">Long-Term Direction</span></div>
+  <div class="sh"><span class="sh-num">07</span><h2 class="sh-title">Aspirations</h2><span class="sh-sub">Long-Term Direction</span></div>
   <div class="asp-layout">
     <div class="asp-text">
       <p id="asp1">What I want most is to do meaningful work in robotics research, specifically in systems that interact with people in real and useful ways. The projects I have built so far have mostly been about the hardware side of that, and I want to go deeper into the science behind it.</p>
@@ -633,7 +689,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 <!-- ESSAY -->
 <section id="essay">
-  <div class="sh"><span class="sh-num">06</span><h2 class="sh-title">Personal Essay</h2><span class="sh-sub">A Personal Reflection</span></div>
+  <div class="sh"><span class="sh-num">08</span><h2 class="sh-title">Personal Essay</h2><span class="sh-sub">A Personal Reflection</span></div>
   <div class="essay-wrap">
     <div class="essay-card">
       <div class="essay-head">
@@ -655,7 +711,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 <!-- AWARDS -->
 <section id="awards">
-  <div class="sh"><span class="sh-num">07</span><h2 class="sh-title">Awards and Honours</h2><span class="sh-sub">Recognition</span></div>
+  <div class="sh"><span class="sh-num">09</span><h2 class="sh-title">Awards and Honours</h2><span class="sh-sub">Recognition</span></div>
   <table class="awards-table">
     <thead><tr><th>Year</th><th>Award</th><th>Type</th></tr></thead>
     <tbody>
@@ -672,7 +728,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="sh"><span class="sh-num">08</span><h2 class="sh-title">Contact</h2><span class="sh-sub">Get In Touch</span></div>
+  <div class="sh"><span class="sh-num">10</span><h2 class="sh-title">Contact</h2><span class="sh-sub">Get In Touch</span></div>
   <div class="contact-layout">
     <div class="contact-intro">
       <h3>Open to research, collaboration and new opportunities</h3>
