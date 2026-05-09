@@ -324,7 +324,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
   <div class="hero-meta">
     <div><span class="meta-val">4.58</span><span class="meta-key">CGPA / 5.00</span></div>
     <div><span class="meta-val">Top 4%</span><span class="meta-key">Graduating Class</span></div>
-    <div><span class="meta-val">7+</span><span class="meta-key">Hardware Projects</span></div>
+    <div><span class="meta-val">9+</span><span class="meta-key">Hardware Projects</span></div>
     <div><span class="meta-val">7</span><span class="meta-key">Awards &amp; Scholarships</span></div>
   </div>
 </section>
@@ -393,7 +393,74 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
   <div class="sh"><span class="sh-num">03</span><h2 class="sh-title">Projects</h2><span class="sh-sub">Engineering Work</span></div>
   <div class="projects-list">
 
-    <!-- P0: Fixed-Wing Drone (group project) -->
+
+
+    
+    <!-- P0: Wearable Fall Detection -->
+    <div class="proj featured blue">
+      <span class="proj-label blue">&#9733; Contract Project &#8212; 2026</span>
+      <h3 class="proj-title">Wearable Fall Detection System &#8212; Edge ML on ESP32</h3>
+      <div class="proj-grid">
+        <div>
+          <p class="proj-desc">A wrist-worn fall detection device built for elderly care and hospital rehabilitation. The system uses a triaxial gyroscope to capture raw angular velocity data, processes it through a DSP pipeline and runs inference directly on the ESP32 WROVER using a machine learning model trained on Edge Impulse. When a fall is detected, the caregiver is notified immediately. The same system applies to hospital settings where patients are relearning to walk after injury or illness.</p>
+          <p class="proj-desc">The ML pipeline begins with signal conditioning using a Butterworth Low-Pass Filter to remove high-frequency noise and Mean Removal to eliminate DC offset. A Fast Fourier Transform converts the signal to the frequency domain, from which key features are extracted including Power Spectral Density, Spectral Peaks, RMS, Skewness and Kurtosis. These features feed into a Deep Neural Network built with Keras and TensorFlow, with Dense layers and Softmax activation for multi-class motion classification. A Gaussian Mixture Model handles anomaly detection, flagging unknown motion profiles rather than forcing incorrect classifications.</p>
+          <div class="proj-tags">
+            <span class="tag hi2">ESP32 WROVER 16MB Flash</span><span class="tag hi2">Triaxial Gyroscope</span><span class="tag hi2">Edge Impulse</span><span class="tag hi2">TensorFlow / Keras</span><span class="tag hi2">Deep Neural Network</span><span class="tag">FFT / Spectral Analysis</span><span class="tag">Power Spectral Density</span><span class="tag">Butterworth Filter</span><span class="tag">Gaussian Mixture Model</span><span class="tag">Anomaly Detection</span><span class="tag">Edge AI</span><span class="tag">Wearable</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/i-am-the-robot" target="_blank" class="proj-link">&#9096; GitHub</a>
+          </div>
+        </div>
+        <div class="sys-diagram">
+          <span class="sd-label">ML Pipeline</span>
+          <div class="sd-line"><span class="sd-key blue">Hardware</span>ESP32 WROVER 16MB</div>
+          <div class="sd-line"><span class="sd-key blue">Sensor</span>Triaxial Gyroscope</div>
+          <div class="sd-line"><span class="sd-key blue">Step 1</span>Butterworth LPF + Mean Removal</div>
+          <div class="sd-line"><span class="sd-key blue">Step 2</span>FFT → Frequency Domain</div>
+          <div class="sd-line"><span class="sd-key blue">Features</span>PSD, Spectral Peaks, RMS, Skewness, Kurtosis</div>
+          <div class="sd-line"><span class="sd-key blue">Model</span>DNN — Dense Layers + Softmax</div>
+          <div class="sd-line"><span class="sd-key blue">Anomaly</span>GMM / K-Means Clustering</div>
+          <div class="sd-line"><span class="sd-key blue">Training</span>Edge Impulse</div>
+          <div class="sd-line"><span class="sd-key blue">Deployment</span>On-device inference, ESP32</div>
+          <div class="sd-line"><span class="sd-key blue">Output</span>Fall detected → Caregiver alert</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P1: Lliuq -->
+    <div class="proj featured orange">
+  <span class="proj-label orange">&#9733; Personal Project &#8212; 2026</span>
+  <h3 class="proj-title">Lliuq &#8212; Serverless AI Platform for Scholarship Preparation</h3>
+  <div class="proj-grid">
+    <div>
+      <p class="proj-desc">I was preparing for a scholarship interview when I hit the third paywall in one night. Every tool that could actually help had a gate in front of it. So I built Lliuq and made it free, because the distance between a prepared candidate and an unprepared one should never come down to what they can afford.</p>
+      <p class="proj-desc">Lliuq is a browser-based suite of three AI-powered tools. Scribe records audio and produces structured, formatted documents using Whisper and Llama, with auto-generated metadata including tone classification, reading time and transcription confidence. Interview is a scholarship interview simulator that generates contextual questions across ten categories, scores spoken answers on content depth and grammar, detects filler words in real time, measures words per minute and returns model answers with improvement tips. Prose is a statement of purpose builder with support for over 100 universities worldwide, generating application writing tailored to the specific institution and programme.</p>
+      <p class="proj-desc">Everything runs entirely in the browser. No account needed. Nothing is stored on any server. The user connects their own free Groq API key and the platform is ready. All inference routes directly from the browser to Groq over HTTPS.</p>
+      <div class="proj-tags">
+        <span class="tag hi3">JavaScript</span><span class="tag hi3">Groq API</span><span class="tag hi3">Llama 3.3 70B</span><span class="tag hi3">Whisper</span><span class="tag hi3">Serverless</span><span class="tag">MediaRecorder API</span><span class="tag">Structured JSON</span><span class="tag">Browser-Based</span><span class="tag">Zero Backend</span><span class="tag">Privacy-First</span><span class="tag">SDG 4</span><span class="tag">SDG 10</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://lliuq.netlify.app" target="_blank" class="proj-link">&#8599; Live Platform</a>
+        <a href="https://github.com/i-am-the-robot" target="_blank" class="proj-link">&#9096; GitHub</a>
+      </div>
+    </div>
+    <div class="sys-diagram">
+      <span class="sd-label">Platform Architecture</span>
+      <div class="sd-line"><span class="sd-key orange">Hosting</span>Netlify (Serverless)</div>
+      <div class="sd-line"><span class="sd-key orange">Inference</span>Groq API (user key)</div>
+      <div class="sd-line"><span class="sd-key orange">LLM</span>Llama 3.3 70B</div>
+      <div class="sd-line"><span class="sd-key orange">Speech</span>Whisper Large v3</div>
+      <div class="sd-line"><span class="sd-key orange">Tool 1</span>Scribe — Audio to Document</div>
+      <div class="sd-line"><span class="sd-key orange">Tool 2</span>Interview — AI Scholarship Simulator</div>
+      <div class="sd-line"><span class="sd-key orange">Tool 3</span>Prose — Statement of Purpose Builder</div>
+      <div class="sd-line"><span class="sd-key orange">Storage</span>localStorage only</div>
+      <div class="sd-line"><span class="sd-key orange">Backend</span>None</div>
+      <div class="sd-line"><span class="sd-key orange">Cost</span>Free to use</div>
+    </div>
+  </div>
+</div>
+
+    <!-- P2: Fixed-Wing Drone (group project) -->
     <div class="proj featured" style="border-left-color: var(--accent2);">
       <span class="proj-label blue">&#9733; Group Project &#8212; 2026</span>
       <h3 class="proj-title">Fixed-Wing Drone &#8212; Full Fabrication Group Project at RAIN</h3>
@@ -416,7 +483,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       </div>
     </div>
 
-  <!-- P1 -->
+  <!-- P3 -->
     <div class="proj featured">
   <span class="proj-label">&#9733; Personal Project &#8212; 2026</span>
   <h3 class="proj-title">Self-Balancing Robot &#8212; Real-Time Digital Twin</h3>
@@ -449,9 +516,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
     
 
-    <!-- P2: Self-Balancing Robot (latest personal project) -->
+    <!-- P4: Self-Balancing Robot (latest personal project) -->
     <div class="proj featured">
-      <span class="proj-label">&#9733; Latest Personal Project &#8212; 2026</span>
+      <span class="proj-label">&#9733; Personal Project &#8212; 2026</span>
       <h3 class="proj-title">Self-Balancing Robot &#8212; PID Control System</h3>
       <div class="proj-grid">
         <div>
@@ -476,7 +543,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       </div>
     </div>
 
-    <!-- P3 -->
+    <!-- P5 -->
     <div class="proj featured blue">
       <span class="proj-label blue">&#9733; Featured &#8212; 2025</span>
       <h3 class="proj-title">Assistive Robot &#8212; 4-DOF Robotic Arm with Bluetooth Control</h3>
@@ -501,7 +568,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       </div>
     </div>
 
-    <!-- P4 -->
+    <!-- P6 -->
     <div class="proj featured orange">
       <span class="proj-label orange">&#9733; Featured &#8212; 2025</span>
       <h3 class="proj-title">Automated Bottling System &#8212; Custom Fabricated Mechatronic System</h3>
@@ -524,7 +591,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       </div>
     </div>
 
-    <!-- P5 -->
+    <!-- P7 -->
     <div class="proj">
       <span class="proj-year">2025</span>
       <div>
@@ -539,7 +606,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
     </div>
 
-    <!-- P6 -->
+    <!-- P8 -->
     <div class="proj">
       <span class="proj-year">2024</span>
       <div>
@@ -553,7 +620,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
       <a href="https://github.com/i-am-the-robot/Home-automation-apps" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.8rem;font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">&#9096; View on GitHub</a>
     </div>
 
-    <!-- P7 -->
+    <!-- P9 -->
     <div class="proj">
       <span class="proj-year">2023&#8211;24</span>
       <div>
